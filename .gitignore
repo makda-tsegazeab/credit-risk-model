@@ -1,0 +1,36 @@
+# Virtual environments
+venv/
+.env/
+
+
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# Data files (optional)
+data/raw/
+data/processed/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# MLflow artifacts
+mlruns/
+mlflow.db
+
+
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+
+# Models
+models/*.joblib
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints/

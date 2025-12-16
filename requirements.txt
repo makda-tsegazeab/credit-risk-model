@@ -1,0 +1,28 @@
+<<<<<<< HEAD
+pandas
+numpy
+scikit-learn
+mlflow
+pytest
+matplotlib
+seaborn
+joblib
+# requirements.txt
+
+
+jupyter
+ipykernel
+notebook
+xgboost
+lightgbm
+
+# API dependencies (if you already have FastAPI)
+fastapi
+python-multipart
+uvicorn
+pydantic
+mlflow
+scikit-learn
+flake8
+pytest
+
