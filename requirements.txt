@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 pandas
 numpy
 scikit-learn

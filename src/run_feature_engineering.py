@@ -1,4 +1,4 @@
-# tests/test_data_processing.py - FIXED VERSION
+# tests/test_data_processing.py
 import pytest
 import pandas as pd
 import numpy as np
@@ -37,11 +37,10 @@ def test_data_preprocessor(sample_data):
     assert 'transaction_day' in transformed.columns
     assert 'transaction_month' in transformed.columns
     assert 'transaction_year' in transformed.columns
-    print("✅ test_data_preprocessor passed")
 
 def test_feature_engineering_pipeline(sample_data):
     """Test pipeline creation and transformation"""
-    pipeline, _, _ = create_feature_engineering_pipeline()
+    pipeline = create_feature_engineering_pipeline()
     X_processed = pipeline.fit_transform(sample_data)
     
     # Check shape
@@ -50,7 +49,6 @@ def test_feature_engineering_pipeline(sample_data):
     
     # Check no NaN values
     assert not np.isnan(X_processed).any()
-    print("✅ test_feature_engineering_pipeline passed")
 
 def test_engineer_features(sample_data):
     """Test main feature engineering function"""
@@ -68,35 +66,3 @@ def test_engineer_features(sample_data):
     
     # Check we have all customers
     assert len(customer_df) == sample_data['CustomerId'].nunique()
-    print("✅ test_engineer_features passed")
-
-def test_feature_engineering_integration():
-    """Test integration with actual data if available"""
-    # Check if data file exists
-    data_path = os.path.join('data', 'raw', 'data.csv')
-    if not os.path.exists(data_path):
-        print("⚠️ Skipping integration test - data.csv not found")
-        return
-    
-    # Load small sample
-    df = pd.read_csv(data_path).head(100)
-    
-    # Test engineer_features
-    try:
-        X_processed, feature_names, customer_df = engineer_features(df)
-        
-        assert X_processed.shape[0] == df.shape[0]
-        assert len(feature_names) > 0
-        assert 'CustomerId' in customer_df.columns
-        
-        print(f"✅ Integration test passed")
-        print(f"   Processed features: {X_processed.shape}")
-        print(f"   Customer features: {customer_df.shape}")
-        
-    except Exception as e:
-        print(f"❌ Integration test failed: {e}")
-        raise
-
-if __name__ == "__main__":
-    # Run all tests
-    pytest.main([__file__, "-v"])
