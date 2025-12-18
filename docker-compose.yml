@@ -1,0 +1,12 @@
+version: "3.9"
+
+services:
+  credit-risk-api:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./models:/app/models
+      - ./src:/app/src
+    environment:
+      - PYTHONUNBUFFERED=1
